@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import NewUser from './components/NewUser/NewUser';
 import Users from './components/User/Users';
 import ErrorModal from './components/UI/ErrorModal';
-
+import Wrapper from './components/Helpers/Wrapper';
 const App = () => {
   const [usersData, setUsersData] = useState([]);
 
@@ -26,7 +26,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <Wrapper>
       {isError && (
         <ErrorModal
           title={errorTitle}
@@ -40,7 +40,7 @@ const App = () => {
         onInvalidCredentials={onInvalidCredentialsHandler}
       />
       {usersData.length > 0 && <Users users={usersData} />}
-    </div>
+    </Wrapper>
   );
 };
 
