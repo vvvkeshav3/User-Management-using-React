@@ -1,0 +1,26 @@
+.modal {
+  position: fixed;
+  top: 30vh;
+  left: 50%;
+  width: 85%;
+  max-width: 650px;
+  transform: translateX(-50%);
+  z-index: 100;
+  overflow: hidden;
+  padding: 0;
+}
+.header,
+.content,
+.actions {
+  padding: 1rem;
+}
+.header {
+  background-color: rgb(141, 19, 104);
+}
+.header h2 {
+  margin: 0;
+  color: white;
+}
+.actions {
+  text-align: right;
+}
