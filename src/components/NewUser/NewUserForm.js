@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import classes from './NewUserForm.module.css';
 import Button from '../UI/Button';
 const NewUserForm = (props) => {
-  const [username, setUsername] = useState('');
-  const [age, setAge] = useState('');
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
 
   const submitHandler = (event) => {
     event.preventDefault();
+    const username = nameInputRef.current.value;
+    const age = ageInputRef.current.value;
     if (username.trim().length === 0 || age.trim().length === 0) {
       props.onInvalidData(
         'Invalid Input',
@@ -21,17 +23,11 @@ const NewUserForm = (props) => {
       };
       props.onSubmit(data);
     }
-    event.target.blur();
-    setUsername('');
-    setAge('');
-  };
 
-  const usernameHandler = (event) => {
-    setUsername(event.target.value);
-  };
-
-  const ageHandler = (event) => {
-    setAge(event.target.value);
+    // Here we are modifying the ref (edge case)
+    // But We should not modify the ref(i.e. real DOM without using React)
+    nameInputRef.current.value = '';
+    ageInputRef.current.value = '';
   };
 
   return (
@@ -43,9 +39,8 @@ const NewUserForm = (props) => {
         <input
           type="text"
           id="username"
-          onChange={usernameHandler}
-          value={username}
           className={classes.input}
+          ref={nameInputRef}
         />
       </div>
       <div className={classes['input-div']}>
@@ -55,9 +50,8 @@ const NewUserForm = (props) => {
         <input
           type="number"
           id="age"
-          value={age}
-          onChange={ageHandler}
           className={classes.input}
+          ref={ageInputRef}
         />
       </div>
       <Button type="submit">Add User</Button>
