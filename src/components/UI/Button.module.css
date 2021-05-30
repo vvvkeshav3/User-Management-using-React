@@ -1,0 +1,9 @@
+.button {
+    font: inherit;
+    padding: 0.75rem 1rem;
+    color: white;
+    background-color: rgb(141, 19, 104);
+    outline: none;
+    border: none;
+  }
+  

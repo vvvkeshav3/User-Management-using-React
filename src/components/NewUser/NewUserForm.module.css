@@ -1,0 +1,22 @@
+.label {
+  display: block;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.25em;
+}
+
+.input {
+    font:inherit;
+    width : 100%;
+    padding : .5em;
+    font-size : 1em;
+}
+
+.input:focus{
+    outline-color: rgb(235, 131, 221) ;
+}
+
+.input-div{
+    margin-bottom : .5em;
+}
+
